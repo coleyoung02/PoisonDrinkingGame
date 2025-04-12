@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     public void SwallowDrop()
     {
         orphansSaved += 1;
-        if (orphansSaved % 20 == 0)
+        if (orphansSaved % 35 == 0)
         {
             willGetUpgrade = true;
         }
