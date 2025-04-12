@@ -2,14 +2,14 @@ using UnityEngine;
 using Rive;
 using Rive.Components;
 using System.Collections;
-public class PoisonBarFrontend : MonoBehaviour
+public class OtherPoisonBarFrontend : MonoBehaviour
 {
 
     [SerializeField] float poisonValue;
     [SerializeField] float deathThreshold;
     [SerializeField] RiveWidget rW;
     float maxPoisonValue = 1f;
-    SMINumber difference;
+   // SMINumber difference;
     SMINumber death;
     SMINumber poison;
 
@@ -26,21 +26,22 @@ public class PoisonBarFrontend : MonoBehaviour
     //Hides the bar
     public void HideBar()
     {
-        gameObject.SetActive(false);
+        StartCoroutine(h());
+        rW.StateMachine.GetTrigger("Close").Fire() ;
     }
     //Takes the raw poison value, the bar adjusts based on the max poison that the player can consume.
     public void UpdatePoisonValue(float value)
     {
         poisonValue = value;
         poison.Value = (poisonValue / maxPoisonValue) * 100f;
-        difference.Value = Mathf.Abs(poison.Value - death.Value);
+      //  difference.Value = Mathf.Abs(poison.Value - death.Value);
     }
     //Used to set the death threshold
     public void UpdateDeathValue(float value)
     {
         deathThreshold = value;
         death.Value =(deathThreshold/ maxPoisonValue) * 100f;
-        difference.Value = Mathf.Abs(poison.Value - death.Value);
+      //  difference.Value = Mathf.Abs(poison.Value - death.Value);
     }
     //Updates the max poison that the player can consume.
     public void UpdateMaxPoisonValue(float value)
@@ -52,7 +53,7 @@ public class PoisonBarFrontend : MonoBehaviour
 
     void Start()
     {
-        difference = rW.StateMachine.GetNumber("Difference");
+       // difference = rW.StateMachine.GetNumber("Difference");
         death = rW.StateMachine.GetNumber("Death");
         poison = rW.StateMachine.GetNumber("Poison");
         StartCoroutine(bandaid());
@@ -61,6 +62,11 @@ public class PoisonBarFrontend : MonoBehaviour
     IEnumerator bandaid()
     {
         yield return null;
-        HideBar();
+        gameObject.SetActive(false);
+    }
+    IEnumerator h()
+    {
+        yield return new WaitForSeconds(0.5f);
+        gameObject.SetActive(false);
     }
 }
