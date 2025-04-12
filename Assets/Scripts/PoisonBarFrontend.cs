@@ -1,7 +1,7 @@
 using UnityEngine;
 using Rive;
 using Rive.Components;
-
+using System.Collections;
 public class PoisonBarFrontend : MonoBehaviour
 {
 
@@ -57,6 +57,12 @@ public class PoisonBarFrontend : MonoBehaviour
         difference = rW.StateMachine.GetNumber("Difference");
         death = rW.StateMachine.GetNumber("Death");
         poison = rW.StateMachine.GetNumber("Poison");
+        StartCoroutine(bandaid());
         
+    }
+    IEnumerator bandaid()
+    {
+        yield return null;
+        HideBar();
     }
 }
