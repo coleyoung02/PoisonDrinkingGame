@@ -4,22 +4,23 @@ using UnityEngine.UI;
 public class SliderScript : MonoBehaviour
 {
     [SerializeField] private Slider slider;
+    [SerializeField] private GameManager gm;
     private float poisonRatio = 0;
     private int delta = 1;
     private bool moving = true;
 
     private float moveRate = 1f;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void ResetSlider()
     {
-        
+        moving = true;
+        delta = 1;
+        poisonRatio = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-
         if (moving)
         {
             poisonRatio += Time.deltaTime * delta * moveRate;
@@ -39,6 +40,7 @@ public class SliderScript : MonoBehaviour
         if (moving && Input.GetKeyDown(KeyCode.Space))
         {
             moving = false;
+            gm.StartDripping(slider.value);
         }
     }
 }

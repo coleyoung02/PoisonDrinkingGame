@@ -18,12 +18,12 @@ public class Rain : MonoBehaviour
         acceleration = 2f;
         velocity = 0f;
         position = leftBound.position.x + (rightBound.position.x - leftBound.position.x) / 4;
-        StartCoroutine(JoinkRoutine(2f / difficultyScale));
     }
 
     public void StartDripping(int count)
     {
         StartCoroutine(DripRoutine(count));
+        StartCoroutine(JoinkRoutine(2f / difficultyScale));
     }
 
     // Update is called once per frame

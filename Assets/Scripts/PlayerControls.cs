@@ -3,7 +3,8 @@ using UnityEngine;
 public class PlayerControls : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
-    [SerializeField] private float acceleration;
+    [SerializeField] private float baseAcceleration;
+    private float acceleration;
     [SerializeField] private Rigidbody2D rb;
     private float velocity;
 
@@ -12,6 +13,12 @@ public class PlayerControls : MonoBehaviour
     void Start()
     {
         velocity = 0f;
+        acceleration = baseAcceleration;
+    }
+
+    public void BoostAcceleration()
+    {
+        acceleration *= 1.5f;
     }
 
     private float UseAcceleration(bool left)
