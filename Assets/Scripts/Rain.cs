@@ -6,6 +6,7 @@ public class Rain : MonoBehaviour
     [SerializeField] private GameObject poisonDrop;
     [SerializeField] private Transform leftBound;
     [SerializeField] private Transform rightBound;
+    [SerializeField] private GameManager gm;
     [SerializeField] private float acceleration;
     [SerializeField] private float difficultyScale;
     private float velocity;
@@ -53,6 +54,11 @@ public class Rain : MonoBehaviour
         if (count - 1 > 0)
         {
             StartCoroutine(DripRoutine(count - 1));
+        }
+        else
+        {
+            yield return new WaitForSeconds(2f);
+            gm.EndWave();
         }
     }
 

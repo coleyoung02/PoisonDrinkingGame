@@ -31,7 +31,6 @@ public class PoisonBarFrontend : MonoBehaviour
     //Takes the raw poison value, the bar adjusts based on the max poison that the player can consume.
     public void UpdatePoisonValue(float value)
     {
-        Debug.Log("poison val " + value);
         poisonValue = value;
         poison.Value = (poisonValue / maxPoisonValue) * 100f;
         difference.Value = Mathf.Abs(poison.Value - death.Value);
@@ -39,7 +38,6 @@ public class PoisonBarFrontend : MonoBehaviour
     //Used to set the death threshold
     public void UpdateDeathValue(float value)
     {
-        Debug.Log("death val " + value);
         deathThreshold = value;
         death.Value =(deathThreshold/ maxPoisonValue) * 100f;
         difference.Value = Mathf.Abs(poison.Value - death.Value);

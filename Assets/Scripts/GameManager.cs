@@ -1,5 +1,5 @@
 using System.Collections;
-using JetBrains.Annotations;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -11,14 +11,24 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PlayerControls pc;
     [SerializeField] private PoisonBarFrontend pbfe;
     [SerializeField] private Rain rain;
+    [SerializeField] private SliderScript sliderOne;
     private float poisonTolerance;
     private int maxDrops;
     private int orphansSaved;
 
     private int poisonSwallowed;
+    private int waveNumber;
+
+    [SerializeField] private GameObject upgradeUIHolder;
+    [SerializeField] private GameObject newsUpgradeCheck;
+    [SerializeField] private GameObject newsArticleHolder;
+    [SerializeField] private List<GameObject> newsArticles;
+
+    private bool willGetUpgrade;
 
     private void Awake()
     {
+        willGetUpgrade = false;
         poisonSwallowed = 0;
         poisonTolerance = basePoisionTolerance;
         maxDrops = baseMaxDrops;
@@ -27,6 +37,10 @@ public class GameManager : MonoBehaviour
     public void SwallowDrop()
     {
         orphansSaved += 1;
+        if (orphansSaved % 20 == 0)
+        {
+            willGetUpgrade = true;
+        }
         poisonSwallowed += 1;
         pbfe.UpdatePoisonValue(poisonSwallowed / (float)maxDrops);
         tm.text = "Orphans saved: " + orphansSaved;
@@ -37,10 +51,58 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void EndWave()
+    {
+        pbfe.HideBar();
+        ResetPoisonMeter();
+        foreach (GameObject g in newsArticles)
+        {
+            if (g != null)
+            {
+                g.SetActive(false);
+            }
+        }
+        newsArticleHolder.SetActive(true);
+        if (waveNumber < newsArticles.Count && newsArticles[waveNumber] != null)
+        {
+            newsUpgradeCheck.SetActive(false);
+            newsArticles[waveNumber].SetActive(true);
+        }
+        else
+        {
+            NewsDone();
+        }
+        if (willGetUpgrade)
+        {
+            upgradeUIHolder.SetActive(true);
+        }
+        waveNumber++;
+    }
+
+    public void NewsDone()
+    {
+        if (!willGetUpgrade)
+        {
+            StartNextWave();
+        }
+    }
+
+    public void UpgradeDone()
+    {
+        upgradeUIHolder.SetActive(false);
+        StartNextWave();
+    }
+
+    public void StartNextWave()
+    {
+        sliderOne.ResetSlider();
+        willGetUpgrade = false;
+    }
+
     public void StartDripping(float fillRatio)
     {
-        StartCoroutine(WaitAndDrip(fillRatio));
         pbfe.ShowBar();
+        StartCoroutine(WaitAndDrip(fillRatio));
     }
 
     private IEnumerator WaitAndDrip(float fillRatio)
