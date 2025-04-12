@@ -16,7 +16,7 @@ public class PoisonBarFrontend : MonoBehaviour
     //Shows the bar
     public void ShowBar()
     {
-        gameObject.SetActive(false);
+        gameObject.SetActive(true);
         rW.StateMachine.GetTrigger("Open").Fire();
         UpdateDeathValue(deathThreshold);
         UpdateMaxPoisonValue(maxPoisonValue);
@@ -51,11 +51,7 @@ public class PoisonBarFrontend : MonoBehaviour
         UpdatePoisonValue(poisonValue);
         UpdateDeathValue(deathThreshold);
     }
-    void Update()
-    {
-        UpdatePoisonValue(poisonValue);
-        UpdatePoisonValue(deathThreshold);
-    }
+
     void Start()
     {
         difference = rW.StateMachine.GetNumber("Difference");
