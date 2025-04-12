@@ -5,10 +5,10 @@ using Rive.Components;
 public class PoisonBarFrontend : MonoBehaviour
 {
 
-    [SerializeField] int poisonValue;
-    [SerializeField] int deathThreshold;
+    [SerializeField] float poisonValue;
+    [SerializeField] float deathThreshold;
     [SerializeField] RiveWidget rW;
-    int maxPoisonValue = 100;
+    float maxPoisonValue = 0.1f;
     SMINumber difference;
     SMINumber death;
     SMINumber poison;
@@ -29,23 +29,23 @@ public class PoisonBarFrontend : MonoBehaviour
         gameObject.SetActive(false);
     }
     //Takes the raw poison value, the bar adjusts based on the max poison that the player can consume.
-    public void UpdatePoisonValue(int value)
+    public void UpdatePoisonValue(float value)
     {
         poisonValue = value;
-        poison.Value = ((float)(((float)poisonValue / (float)maxPoisonValue) * 100f));
+        poison.Value = (poisonValue / maxPoisonValue) * 100f;
         difference.Value = Mathf.Abs(poison.Value - death.Value);
 
 
     }
     //Used to set the death threshold
-    public void UpdateDeathValue(int value)
+    public void UpdateDeathValue(float value)
     {
         deathThreshold = value;
-        death.Value = ((float)(((float)deathThreshold/ (float)maxPoisonValue) * 100f));
+        death.Value =(deathThreshold/ maxPoisonValue) * 100f;
         difference.Value = Mathf.Abs(poison.Value - death.Value);
     }
     //Updates the max poison that the player can consume.
-    public void UpdateMaxPoisonValue(int value)
+    public void UpdateMaxPoisonValue(float value)
     {
         maxPoisonValue = value;
         UpdatePoisonValue(poisonValue);
@@ -54,6 +54,7 @@ public class PoisonBarFrontend : MonoBehaviour
     void Update()
     {
         UpdatePoisonValue(poisonValue);
+        UpdatePoisonValue(deathThreshold);
     }
     void Start()
     {
