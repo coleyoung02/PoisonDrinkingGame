@@ -18,8 +18,12 @@ public class Rain : MonoBehaviour
         acceleration = 2f;
         velocity = 0f;
         position = leftBound.position.x + (rightBound.position.x - leftBound.position.x) / 4;
-        StartCoroutine(DripRoutine());
         StartCoroutine(JoinkRoutine(2f / difficultyScale));
+    }
+
+    public void StartDripping(int count)
+    {
+        StartCoroutine(DripRoutine(count));
     }
 
     // Update is called once per frame
@@ -42,11 +46,14 @@ public class Rain : MonoBehaviour
         }
     }
 
-    private IEnumerator DripRoutine()
+    private IEnumerator DripRoutine(int count)
     {
         Instantiate(poisonDrop, transform.position, Quaternion.identity);
         yield return new WaitForSeconds(.25f);
-        StartCoroutine(DripRoutine());
+        if (count - 1 > 0)
+        {
+            StartCoroutine(DripRoutine(count - 1));
+        }
     }
 
     private IEnumerator JoinkRoutine(float f)
