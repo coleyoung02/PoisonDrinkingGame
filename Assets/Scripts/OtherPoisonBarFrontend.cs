@@ -22,7 +22,6 @@ public class OtherPoisonBarFrontend : MonoBehaviour
     IEnumerator bd3()
     {
         yield return null;
-        Debug.Log("alli");
         
         rW.StateMachine.GetTrigger("Open").Fire();
         UpdateDeathValue(deathThreshold);

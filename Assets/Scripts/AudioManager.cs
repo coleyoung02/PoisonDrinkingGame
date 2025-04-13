@@ -21,6 +21,7 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
+            orphansSaved = 0;
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }

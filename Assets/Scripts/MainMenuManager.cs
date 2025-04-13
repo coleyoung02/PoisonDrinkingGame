@@ -12,12 +12,13 @@ public class MainMenuManager : MonoBehaviour
 
     public void StartGame()
     {
-
+        AudioManager.orphansSaved = 0;
         TransitionManager.instance.StartGame();
     }
 
     public void MainMenu()
     {
+        AudioManager.orphansSaved = 0;
         SceneManager.LoadScene("MainMenu");
     }
 

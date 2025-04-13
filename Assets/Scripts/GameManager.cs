@@ -52,11 +52,11 @@ public class GameManager : MonoBehaviour
         orphansSaved += 1;
         AudioManager.Instance.PlayAudioClip(dropNoise);
         AudioManager.orphansSaved = orphansSaved;
-        if (orphansSaved % 25 == 0)
+        poisonSwallowed += 1;
+        if (poisonSwallowed >= 20)
         {
             willGetUpgrade = true;
         }
-        poisonSwallowed += 1;
         pbfe.UpdatePoisonValue(poisonSwallowed / (float)maxDrops);
         tm.text = "Orphans saved: " + orphansSaved;
         if (poisonSwallowed > poisonTolerance + 1)

@@ -908,8 +908,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: If you cleared a multiple of 25 drops of poison cleared, you get stronger,
-    and will get a choice of an upgrade at the end of the day.
+  m_text: If you drank 20 drops of poison in one day, you get stronger, and will
+    get a choice of an upgrade at the end of the day. Be careful though, as though
+    you need poison to get stronger, too much will kill you.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a6b730945bd6ed04e84e702db3a4098c, type: 2}
   m_sharedMaterial: {fileID: -7727042171537785345, guid: a6b730945bd6ed04e84e702db3a4098c, type: 2}

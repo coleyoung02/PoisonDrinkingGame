@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f1ac11660eb38a24fb1c0948e3feffde
+guid: 85d00ca4c7e28e04b85662b80854246a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7262119653502517537
-    second: Torso_0
+      213: -1447801033613893626
+    second: rightThigh_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,32 +97,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: iOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -139,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Torso_0
+      name: rightThigh_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 9
-        width: 389
-        height: 477
+        x: 0
+        y: 17
+        width: 176
+        height: 340
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1218667395b38c460800000000000000
-      internalID: 7262119653502517537
+      spriteID: 600200671a068ebe0800000000000000
+      internalID: -1447801033613893626
       vertices: []
       indices: 
       edges: []
@@ -174,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Torso_0: 7262119653502517537
+      rightThigh_0: -1447801033613893626
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
