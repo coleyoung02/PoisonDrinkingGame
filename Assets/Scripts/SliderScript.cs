@@ -26,7 +26,10 @@ public class SliderScript : MonoBehaviour
             yield break;
         }
         opb.ShowBar();
+       
+        opb.UpdatePoisonValue(poisonRatio);
         opb.UpdateDeathValue(deathThresh);
+        yield return new WaitForSeconds(0.5f);
         moving = true;
         delta = 1;
         poisonRatio = 0;
