@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PoisonBarFrontend pbfe;
     [SerializeField] private Rain rain;
     [SerializeField] private SliderScript sliderOne;
+    [SerializeField] private AudioClip dropNoise;
     private float poisonTolerance;
     private int maxDrops;
     private int orphansSaved;
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
     public void SwallowDrop()
     {
         orphansSaved += 1;
+        AudioManager.Instance.PlayAudioClip(dropNoise);
         AudioManager.orphansSaved = orphansSaved;
         if (orphansSaved % 30 == 0)
         {

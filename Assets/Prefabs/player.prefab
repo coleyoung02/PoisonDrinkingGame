@@ -1833,6 +1833,7 @@ MonoBehaviour:
   pbfe: {fileID: 0}
   rain: {fileID: 0}
   sliderOne: {fileID: 0}
+  dropNoise: {fileID: 8300000, guid: 50866b41b13e225478c38551cf211c0f, type: 3}
   upgradeUIHolder: {fileID: 0}
   newsUpgradeCheck: {fileID: 0}
   newsArticleHolder: {fileID: 0}
