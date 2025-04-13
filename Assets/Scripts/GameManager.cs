@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PoisonBarFrontend pbfe;
     [SerializeField] private Rain rain;
     [SerializeField] private SliderScript sliderOne;
+    [SerializeField] private AudioClip dropNoise;
     private float poisonTolerance;
     private int maxDrops;
     private int orphansSaved;
@@ -37,7 +39,9 @@ public class GameManager : MonoBehaviour
     public void SwallowDrop()
     {
         orphansSaved += 1;
-        if (orphansSaved % 35 == 0)
+        AudioManager.Instance.PlayAudioClip(dropNoise);
+        AudioManager.orphansSaved = orphansSaved;
+        if (orphansSaved % 30 == 0)
         {
             willGetUpgrade = true;
         }
@@ -46,9 +50,14 @@ public class GameManager : MonoBehaviour
         tm.text = "Orphans saved: " + orphansSaved;
         if (poisonSwallowed > poisonTolerance)
         {
-            Debug.LogError("you died");
+            SceneManager.LoadScene("DeathScene");
         }
 
+    }
+
+    public void Win()
+    {
+        SceneManager.LoadScene("WinScene");
     }
 
     public void EndWave()
