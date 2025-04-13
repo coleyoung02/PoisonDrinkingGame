@@ -16,6 +16,7 @@ public class OtherPoisonBarFrontend : MonoBehaviour
     //Shows the bar
     public void ShowBar()
     {
+        Debug.Log("alli");
         gameObject.SetActive(true);
         rW.StateMachine.GetTrigger("Open").Fire();
         UpdateDeathValue(deathThreshold);
@@ -56,14 +57,9 @@ public class OtherPoisonBarFrontend : MonoBehaviour
        // difference = rW.StateMachine.GetNumber("Difference");
         death = rW.StateMachine.GetNumber("Death");
         poison = rW.StateMachine.GetNumber("Poison");
-        StartCoroutine(bandaid());
         
     }
-    IEnumerator bandaid()
-    {
-        yield return null;
-        gameObject.SetActive(false);
-    }
+
     IEnumerator h()
     {
         yield return new WaitForSeconds(0.5f);

@@ -6,10 +6,12 @@ public class NewspaperEffect : MonoBehaviour
     [SerializeField] private float effectDuration;
     [SerializeField] private float targetRotation;
     [SerializeField] private float startRotation;
+    [SerializeField] private AudioClip newsNoise;
 
     private void OnEnable()
     {
         StartCoroutine(SpinIn());
+        AudioManager.Instance.PlayAudioClip(newsNoise);
     }
 
     private IEnumerator SpinIn()

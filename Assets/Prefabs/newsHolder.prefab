@@ -91,6 +91,7 @@ MonoBehaviour:
   effectDuration: 1
   targetRotation: 3
   startRotation: -2000
+  newsNoise: {fileID: 8300000, guid: 2a36b4402d6ebe349a82cc9490fb0672, type: 3}
 --- !u!1 &3250357317163394253
 GameObject:
   m_ObjectHideFlags: 0

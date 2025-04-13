@@ -5,14 +5,22 @@ public class SliderScript : MonoBehaviour
 {
     [SerializeField] private Slider slider;
     [SerializeField] private GameManager gm;
+    [SerializeField] private OtherPoisonBarFrontend opb;
     private float poisonRatio = 0;
     private int delta = 1;
     private bool moving = true;
 
     private float moveRate = 1f;
 
-    public void ResetSlider()
+    public void ResetSlider(float deathThresh, bool initial=false)
     {
+        if (initial)
+        {
+            opb.UpdateDeathValue(deathThresh);
+            return;
+        }
+        opb.ShowBar();
+        opb.UpdateDeathValue(deathThresh);
         moving = true;
         delta = 1;
         poisonRatio = 0;
@@ -36,11 +44,13 @@ public class SliderScript : MonoBehaviour
             delta = 1;
         }
         slider.value = poisonRatio;
+        opb.UpdatePoisonValue(poisonRatio);
 
         if (moving && Input.GetKeyDown(KeyCode.Space))
         {
             moving = false;
             gm.StartDripping(slider.value);
+            opb.HideBar();
         }
     }
 }

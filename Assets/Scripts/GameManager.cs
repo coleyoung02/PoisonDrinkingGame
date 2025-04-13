@@ -36,19 +36,30 @@ public class GameManager : MonoBehaviour
         maxDrops = baseMaxDrops;
     }
 
+    private void Start()
+    {
+        StartCoroutine(DelayConfig());
+    }
+
+    private IEnumerator DelayConfig()
+    {
+        yield return new WaitForSeconds(.1f);
+        sliderOne.ResetSlider(poisonTolerance / maxDrops, true);
+    }
+
     public void SwallowDrop()
     {
         orphansSaved += 1;
         AudioManager.Instance.PlayAudioClip(dropNoise);
         AudioManager.orphansSaved = orphansSaved;
-        if (orphansSaved % 30 == 0)
+        if (orphansSaved % 25 == 0)
         {
             willGetUpgrade = true;
         }
         poisonSwallowed += 1;
         pbfe.UpdatePoisonValue(poisonSwallowed / (float)maxDrops);
         tm.text = "Orphans saved: " + orphansSaved;
-        if (poisonSwallowed > poisonTolerance)
+        if (poisonSwallowed > poisonTolerance + 1)
         {
             SceneManager.LoadScene("DeathScene");
         }
@@ -104,7 +115,7 @@ public class GameManager : MonoBehaviour
 
     public void StartNextWave()
     {
-        sliderOne.ResetSlider();
+        sliderOne.ResetSlider(poisonTolerance / maxDrops);
         willGetUpgrade = false;
     }
 
