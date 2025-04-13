@@ -1073,7 +1073,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9162187333235452244, guid: 309b7ebfb9a8c61418e856d8b6c23ad2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: NewsDone
+      value: Win
       objectReference: {fileID: 0}
     - target: {fileID: 9162187333235452244, guid: 309b7ebfb9a8c61418e856d8b6c23ad2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
@@ -2754,6 +2754,10 @@ PrefabInstance:
       propertyPath: 'newsArticles.Array.data[3]'
       value: 
       objectReference: {fileID: 517671204}
+    - target: {fileID: 2773292548505940027, guid: d1e53d15f2accd547bfba5056abb3019, type: 3}
+      propertyPath: m_Name
+      value: rightThigh
+      objectReference: {fileID: 0}
     - target: {fileID: 7445566074239782809, guid: d1e53d15f2accd547bfba5056abb3019, type: 3}
       propertyPath: m_Name
       value: player
