@@ -105,6 +105,12 @@ public class GameManager : MonoBehaviour
         {
             StartNextWave();
         }
+        else
+        {
+
+            TransitionManager.instance.OpenUpgrades();
+            upgradeUIHolder.SetActive(false);
+        }
     }
 
     public void UpgradeDone()
@@ -127,9 +133,10 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator WaitAndDrip(float fillRatio)
     {
+        pbfe.UpdateDeathValue(poisonTolerance / (maxDrops * fillRatio));
         yield return new WaitForSeconds(1.5f);
         rain.StartDripping(Mathf.RoundToInt(maxDrops * fillRatio));
-        pbfe.UpdateDeathValue(poisonTolerance / (maxDrops * fillRatio));
+        
     }
 
     public void ResetPoisonMeter()

@@ -16,19 +16,24 @@ public class OtherPoisonBarFrontend : MonoBehaviour
     //Shows the bar
     public void ShowBar()
     {
-        Debug.Log("alli");
         gameObject.SetActive(true);
+        StartCoroutine(bd3());
+    }
+    IEnumerator bd3()
+    {
+        yield return null;
+        Debug.Log("alli");
+        
         rW.StateMachine.GetTrigger("Open").Fire();
         UpdateDeathValue(deathThreshold);
         UpdateMaxPoisonValue(maxPoisonValue);
         UpdatePoisonValue(poisonValue);
     }
-
     //Hides the bar
     public void HideBar()
     {
         StartCoroutine(h());
-        rW.StateMachine.GetTrigger("Close").Fire() ;
+        rW.StateMachine.GetTrigger("Close").Fire();
     }
     //Takes the raw poison value, the bar adjusts based on the max poison that the player can consume.
     public void UpdatePoisonValue(float value)
@@ -57,7 +62,8 @@ public class OtherPoisonBarFrontend : MonoBehaviour
        // difference = rW.StateMachine.GetNumber("Difference");
         death = rW.StateMachine.GetNumber("Death");
         poison = rW.StateMachine.GetNumber("Poison");
-        
+        StartCoroutine(bd());
+
     }
 
     IEnumerator h()
@@ -65,4 +71,11 @@ public class OtherPoisonBarFrontend : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         gameObject.SetActive(false);
     }
+    IEnumerator bd()
+    {
+        rW.StateMachine.GetTrigger("Open").Fire();
+        yield return null;
+        rW.StateMachine.GetTrigger("Close").Fire();
+    }
+   
 }

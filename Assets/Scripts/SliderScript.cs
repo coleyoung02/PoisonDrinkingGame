@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-
+using System.Collections;
 public class SliderScript : MonoBehaviour
 {
     [SerializeField] private Slider slider;
@@ -14,10 +14,16 @@ public class SliderScript : MonoBehaviour
 
     public void ResetSlider(float deathThresh, bool initial=false)
     {
+        StartCoroutine(bandaid(deathThresh, initial));
+    }
+    IEnumerator bandaid(float deathThresh, bool initial = false)
+    {
+        yield return new WaitForSeconds(2.5f);
         if (initial)
         {
             opb.UpdateDeathValue(deathThresh);
-            return;
+            opb.ShowBar();
+            yield break;
         }
         opb.ShowBar();
         opb.UpdateDeathValue(deathThresh);
@@ -25,13 +31,13 @@ public class SliderScript : MonoBehaviour
         delta = 1;
         poisonRatio = 0;
     }
-
     // Update is called once per frame
     void Update()
     {
         if (moving)
         {
             poisonRatio += Time.deltaTime * delta * moveRate;
+            
         }
         if (poisonRatio > 1)
         {

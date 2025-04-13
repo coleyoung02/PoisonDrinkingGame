@@ -12,7 +12,8 @@ public class MainMenuManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Game");
+
+        TransitionManager.instance.StartGame();
     }
 
     public void MainMenu()
