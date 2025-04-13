@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using Rive;
+using Rive.Components;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI tm;
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject newsUpgradeCheck;
     [SerializeField] private GameObject newsArticleHolder;
     [SerializeField] private List<GameObject> newsArticles;
+    [SerializeField] RiveWidget rW;
 
     private bool willGetUpgrade;
 
@@ -59,6 +61,7 @@ public class GameManager : MonoBehaviour
         }
         pbfe.UpdatePoisonValue(poisonSwallowed / (float)maxDrops);
         tm.text = "Orphans saved: " + orphansSaved;
+        rW.StateMachine.GetTrigger("Got").Fire();
         if (poisonSwallowed > poisonTolerance + 1)
         {
             SceneManager.LoadScene("DeathScene");
