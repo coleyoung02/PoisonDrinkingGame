@@ -280,6 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80d9d696618e3724dac89166f5084bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ani: {fileID: 9103927442109597560}
 --- !u!1 &2367930928657670290
 GameObject:
   m_ObjectHideFlags: 0
@@ -1026,7 +1027,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.1, y: 0.79}
-  m_ConnectedAnchor: {x: -0.015999973, y: -2.4909992}
+  m_ConnectedAnchor: {x: -0.015999973, y: -2.4910002}
   m_UseConnectedAnchor: 1
   m_UseMotor: 0
   m_Motor:
@@ -1237,6 +1238,7 @@ GameObject:
   - component: {fileID: 209931921198911322}
   - component: {fileID: 5612292680843162805}
   - component: {fileID: 942406241449619164}
+  - component: {fileID: 9103927442109597560}
   m_Layer: 6
   m_Name: ball_0
   m_TagString: Untagged
@@ -1378,6 +1380,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &9103927442109597560
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4272291786925185549}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 482fef7ea17baed469d0b91d177cd514, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5833383391496572170
 GameObject:
   m_ObjectHideFlags: 0
@@ -1557,7 +1581,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0.04, y: 0.59}
-  m_ConnectedAnchor: {x: 0.09799993, y: -2.6690001}
+  m_ConnectedAnchor: {x: 0.09799993, y: -2.6690006}
   m_UseConnectedAnchor: 1
   m_UseMotor: 0
   m_Motor:
